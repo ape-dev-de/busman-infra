@@ -1,0 +1,9 @@
+defaultSettings:
+    createDefaultDiskLabeledNodes: true
+    defaultDataPath: /var/longhorn
+    node-down-pod-deletion-policy: delete-both-statefulset-and-deployment-pod
+persistence:
+    defaultFsType: ext4
+    defaultClassReplicaCount: 1
+    defaultClass: true
+    reclaimPolicy: Retain

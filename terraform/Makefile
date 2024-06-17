@@ -2,11 +2,11 @@
 
 backend:
 	terraform init -reconfigure
-	terraform apply -var-file .tfvars --target="azurerm_storage_container.tfstate"  -auto-approve
+	terraform apply --target="module.backend"  -auto-approve
 migrate:
 	terraform init -migrate-state
 start:
-	terraform apply -var-file .tfvars  -auto-approve
+	terraform apply -auto-approve
 	
 destroy:
 	terraform destroy -var-file .tfvars

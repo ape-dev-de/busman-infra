@@ -1,0 +1,10 @@
+hcloud_token=
+microos_x86_snapshot_id      = "169768720"
+microos_arm_snapshot_id      = "169768723"
+
+smtp_host="email-smtp.eu-central-1.amazonaws.com"
+smtp_user=
+smtp_password=
+
+encryption_password = 
+encryption_salt = 

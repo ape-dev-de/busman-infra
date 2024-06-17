@@ -1,0 +1,28 @@
+image:
+  tag: 
+deployment:
+  replicas: 1
+globalArguments: []
+service:
+  enabled: true
+  type: LoadBalancer
+ports:
+  web:
+    redirectTo:
+      port: websecure
+podDisruptionBudget:
+  enabled: true
+  maxUnavailable: 33%
+additionalArguments:
+  - "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
+resources:
+  requests:
+    cpu: "100m"
+    memory: "50Mi"
+  limits:
+    cpu: "300m"
+    memory: "150Mi"
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10

@@ -1,3 +1,7 @@
+module "backend" {
+    source = "./modules/backend"
+}
+
 locals {
     kube_config_path = "${path.module}/k3s_kubeconfig.yaml"
 }
@@ -11,6 +15,7 @@ provider "kubernetes" {
     config_path = local.kube_config_path
 }
 
+/*
 resource "kubernetes_namespace" "appsmith-ce" {
     metadata {
         name = var.namespace
@@ -23,21 +28,6 @@ resource "kubernetes_namespace" "cockroach" {
         name = "cockroach"
     }
 }
-/*
-
-resource "kubernetes_namespace" "ingress" {
-    metadata {
-        name = "ingress"
-    }
-}
-resource "helm_release" "ingress-nginx" {
-    chart = "ingress-nginx"
-    name = "ingress-nginx"
-    
-    namespace = "ingress"
-    repository= "https://kubernetes.github.io/ingress-nginx"
-}
-*/
 
 resource "helm_release" "appsmith" {
     chart = "appsmith"
@@ -57,7 +47,6 @@ resource "helm_release" "appsmith" {
     
     depends_on = [ kubernetes_namespace.appsmith-ce ]
 }
-/*
 resource "helm_release" "cockroach" {
     chart = "cockroachdb"
     name = "cockroachdb"

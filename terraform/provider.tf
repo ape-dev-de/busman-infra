@@ -15,9 +15,10 @@ terraform {
             version = "~>3.0"
         }
     }
+    # backend local
     backend "azurerm" {
-        resource_group_name  = "appsmith"
-        storage_account_name = "tfstatedz7yt"
+        resource_group_name  = "terraform"
+        storage_account_name = "tfstate4gw2r"
         container_name       = "tfstate"
         key                  = "terraform.tfstate"
     }
